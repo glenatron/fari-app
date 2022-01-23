@@ -158,7 +158,7 @@ export function BlockPointCounter(
           alignItems="center"
           spacing={1}
         >
-          <Grid item>
+            <Grid item>
             <CircleTextField
               data-cy={`${props.dataCy}.value`}
               highlight={props.block.meta.isMainPointCounter}

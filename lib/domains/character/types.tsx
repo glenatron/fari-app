@@ -8,6 +8,7 @@ export enum BlockType {
   DicePool = "DicePool",
   PointCounter = "PointCounter",
   SlotTracker = "SlotTracker",
+  PbtaMove = "PbtaMove",
   Image = "Image",
   Link = "Link",
   Separator = "Separator",
@@ -172,6 +173,22 @@ export type ISlotTrackerBlock = {
   }>;
 };
 
+export type IPbtaMoveBlockValue = {
+  trigger: string;
+  stat: string;
+  success: string;
+  partial: string;
+  notes: string;
+};
+
+export type IPbtaMoveBlock = {
+  type: BlockType.PbtaMove,
+  meta: IDefaultBlockMeta & {
+    checked?: boolean;
+  };
+  value: IPbtaMoveBlockValue;
+};
+
 export type IPointCounterBlock = {
   type: BlockType.PointCounter;
   meta: IDefaultBlockMeta & {
@@ -212,7 +229,8 @@ export type IBlockTypes =
   | IPointCounterBlock
   | IImageBlock
   | ILinkBlock
-  | ISeparatorBlock;
+  | ISeparatorBlock
+  | IPbtaMoveBlock;
 
 export type IBlock = {
   type: BlockType;

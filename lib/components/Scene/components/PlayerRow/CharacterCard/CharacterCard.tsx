@@ -25,6 +25,7 @@ import {
   ISkillBlock,
   ISlotTrackerBlock,
   ITextBlock,
+  IPbtaMoveBlock
 } from "../../../../../domains/character/types";
 import { IDiceRollResult } from "../../../../../domains/dice/Dice";
 import { useTextColors } from "../../../../../hooks/useTextColors/useTextColors";
@@ -37,11 +38,13 @@ import { BlockPointCounter } from "../../../../../routes/Character/components/Ch
 import { BlockSeparator } from "../../../../../routes/Character/components/CharacterDialog/components/blocks/BlockSeparator";
 import { BlockSlotTracker } from "../../../../../routes/Character/components/CharacterDialog/components/blocks/BlockSlotTracker";
 import { BlockText } from "../../../../../routes/Character/components/CharacterDialog/components/blocks/BlockText";
+import { BlockPbtaMove } from "../../../../../routes/Character/components/CharacterDialog/components/blocks/BlockPbtaMove";
 import { BlockSelectors } from "../../../../../routes/Character/components/CharacterDialog/domains/BlockSelectors/BlockSelectors";
 import { previewContentEditable } from "../../../../ContentEditable/ContentEditable";
 import { FateLabel } from "../../../../FateLabel/FateLabel";
 import { paperStyle } from "../../../Scene";
 
+//TODO start here
 export const CharacterCard: React.FC<{
   characterSheet: ICharacter | undefined;
   playerName: string | undefined;
@@ -95,6 +98,7 @@ export const CharacterCard: React.FC<{
     SlotTracker: renderBlockSlotTracker,
     Link: renderBlockLink,
     Separator: renderSeparatorBlock,
+    PbtaMove: renderBlockPbtaMove
   };
 
   return (
@@ -400,6 +404,24 @@ export const CharacterCard: React.FC<{
           onMetaChange={() => {}}
           onRoll={() => {}}
         />
+      </Grid>
+    );
+  }
+
+  
+  function renderBlockPbtaMove(section: ISection, block: IBlock & IPbtaMoveBlock) {
+    return (
+      <Grid item xs={12} className={css({ marginTop: ".5rem" })}>
+          <BlockPbtaMove
+            advanced={false}
+            readonly={true}
+            dataCy={`character-card.${section.label}.${block.label}`}
+            block={block}
+            onLabelChange={() => {}}
+            onValueChange={() => {}}
+            onMetaChange={() => {}}
+            onRoll={() => {}}
+          />
       </Grid>
     );
   }

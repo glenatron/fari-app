@@ -9,11 +9,12 @@ import {
   INumericBlock,
   ISkillBlock,
   ITextBlock,
+  IPbtaMoveBlock
 } from "../../../../../domains/character/types";
 
 export function BlockToggleMeta<
   TBlock extends IBlock &
-    (ITextBlock | INumericBlock | ISkillBlock | IDicePoolBlock)
+    (ITextBlock | INumericBlock | ISkillBlock | IDicePoolBlock | IPbtaMoveBlock )
 >(props: {
   readonly: boolean | undefined;
   dataCy: string;

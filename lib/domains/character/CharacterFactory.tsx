@@ -19,6 +19,7 @@ import {
   ISkillBlock,
   ISlotTrackerBlock,
   ITextBlock,
+  IPbtaMoveBlock,
   IV1Character,
   IV2Character,
   IV3Character,
@@ -30,8 +31,8 @@ export const CharacterFactory = {
   latestVersion: 4,
   async make(type: CharacterTemplates): Promise<ICharacter> {
     const templateFunctions: Record<
-      CharacterTemplates,
-      () => Promise<ICharacter>
+    CharacterTemplates,
+    () => Promise<ICharacter>
     > = {
       /**
        * @author @RPDeshaies
@@ -329,7 +330,7 @@ export const CharacterFactory = {
         return this.makeFromJson(jsonData);
       },
     };
-
+  
     const newCharacter = await templateFunctions[type]();
     return {
       ...newCharacter,
@@ -458,8 +459,23 @@ export const CharacterFactory = {
         meta: { hasLabel: false },
         value: "",
       } as IBlock & ISeparatorBlock,
+      [BlockType.PbtaMove]: {
+	id: Id.generate(),
+	label: "",
+	type: type,
+	meta: {
+	  checked: undefined
+	},
+	value: {
+	  trigger: 'Trigger',
+	  stat: 'Stat',
+	  success: '10+ result',
+	  partial: '7-9 result',
+	  notes: ''
+	}
+      }
     };
-
+  
     return blockDefault[type] as IBlock & TType;
   },
   duplicateBlock(block: IBlock): IBlock {
@@ -480,7 +496,7 @@ export const CharacterFactory = {
     return produce(page, (draft) => {
       draft.id = Id.generate();
       draft.label += " Copy";
-
+    
       draft.sections.left.forEach((s) => {
         s.id = Id.generate();
         s.blocks.forEach((b) => {

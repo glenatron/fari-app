@@ -30,11 +30,12 @@ import {
   BlockSlotTrackerActions,
 } from "./blocks/BlockSlotTracker";
 import { BlockText, BlockTextActions } from "./blocks/BlockText";
+import { BlockPbtaMove, BlockPbtaMoveActions } from "./blocks/BlockPbtaMove";
 
 export function BlockByType(
   props: Omit<
-    IBlockComponentProps<any>,
-    "onLabelChange" | "onValueChange" | "onMetaChange"
+  IBlockComponentProps<any>,
+  "onLabelChange" | "onValueChange" | "onMetaChange"
   > & {
     hideHelp?: boolean;
     otherActions?: JSX.Element;
@@ -102,190 +103,207 @@ export function BlockByType(
 
   return (
     <Box my={isSeparatorBlock ? ".5rem" : "0"}>
-      {props.block.type === BlockType.Text && (
-        <BlockText
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
-      {props.block.type === BlockType.Numeric && (
-        <BlockNumeric
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
-      {props.block.type === BlockType.Image && (
-        <BlockImage
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
-      {props.block.type === BlockType.Skill && (
-        <BlockSkill
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
-      {props.block.type === BlockType.DicePool && (
-        <BlockDicePool
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
-      {props.block.type === BlockType.PointCounter && (
-        <BlockPointCounter
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
+	{props.block.type === BlockType.Text && (
+          <BlockText
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
+	{props.block.type === BlockType.Numeric && (
+          <BlockNumeric
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
+	{props.block.type === BlockType.Image && (
+          <BlockImage
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
+	{props.block.type === BlockType.Skill && (
+          <BlockSkill
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
+	{props.block.type === BlockType.DicePool && (
+          <BlockDicePool
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
+	{props.block.type === BlockType.PointCounter && (
+          <BlockPointCounter
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
 
-      {props.block.type === BlockType.SlotTracker && (
-        <BlockSlotTracker
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
+	{props.block.type === BlockType.SlotTracker && (
+          <BlockSlotTracker
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
 
-      {props.block.type === BlockType.Link && (
-        <BlockLink
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
+	{props.block.type === BlockType.Link && (
+          <BlockLink
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
 
-      {props.block.type === BlockType.Separator && (
-        <BlockSeparator
-          advanced={props.advanced}
-          dataCy={props.dataCy}
-          readonly={props.readonly}
-          block={block}
-          onLabelChange={handleOnLabelChange}
-          onValueChange={handleOnValueChange}
-          onMetaChange={handleOnMetaChange}
-          onRoll={props.onRoll}
-        />
-      )}
+	{props.block.type === BlockType.Separator && (
+          <BlockSeparator
+            advanced={props.advanced}
+            dataCy={props.dataCy}
+            readonly={props.readonly}
+            block={block}
+            onLabelChange={handleOnLabelChange}
+            onValueChange={handleOnValueChange}
+            onMetaChange={handleOnMetaChange}
+            onRoll={props.onRoll}
+          />
+	)}
 
-      {renderBlockHelpText()}
-      {props.advanced && renderBlockAdvancedOptions()}
+	{props.block.type === BlockType.PbtaMove && (
+          <Grid item xs={12} className={css({ marginTop: ".5rem" })}>
+              <BlockPbtaMove
+		advanced={props.advanced}
+		readonly={props.readonly}
+		dataCy={props.dataCy}
+		block={block}
+		onLabelChange={handleOnLabelChange}
+		onValueChange={handleOnValueChange}
+		onMetaChange={handleOnMetaChange}
+		onRoll={props.onRoll}
+              />
+          </Grid>
+	)}
+	
+	{renderBlockHelpText()}
+	{props.advanced && renderBlockAdvancedOptions()}
     </Box>
   );
 
   function renderBlockAdvancedOptions() {
     return (
       <Grid container justifyContent="flex-end" spacing={1}>
-        {block.type === BlockType.PointCounter && (
-          <BlockPointCounterActions
-            block={block}
-            onMetaChange={handleOnMetaChange}
-            onMainPointCounterChange={props.onMainPointCounterChange}
-          />
-        )}
-        {block.type === BlockType.Text && (
-          <BlockTextActions block={block} onMetaChange={handleOnMetaChange} />
-        )}
-        {block.type === BlockType.Numeric && (
-          <BlockNumericActions
-            block={block}
-            onMetaChange={handleOnMetaChange}
-          />
-        )}
-        {block.type === BlockType.SlotTracker && (
-          <BlockSlotTrackerActions
-            block={block}
-            onMetaChange={handleOnMetaChange}
-          />
-        )}
+          {block.type === BlockType.PointCounter && (
+            <BlockPointCounterActions
+              block={block}
+              onMetaChange={handleOnMetaChange}
+              onMainPointCounterChange={props.onMainPointCounterChange}
+            />
+          )}
+          {block.type === BlockType.Text && (
+            <BlockTextActions block={block} onMetaChange={handleOnMetaChange} />
+          )}
+          {block.type === BlockType.Numeric && (
+            <BlockNumericActions
+              block={block}
+              onMetaChange={handleOnMetaChange}
+            />
+          )}
+          {block.type === BlockType.SlotTracker && (
+            <BlockSlotTrackerActions
+              block={block}
+              onMetaChange={handleOnMetaChange}
+            />
+          )}
 
-        {block.type === BlockType.Skill && (
-          <BlockSkillActions block={block} onMetaChange={handleOnMetaChange} />
-        )}
-        {block.type === BlockType.DicePool && (
-          <BlockDicePoolActions
-            block={block}
-            onMetaChange={handleOnMetaChange}
-          />
-        )}
-        {block.type === BlockType.Link && (
-          <BlockLinkActions block={block} onMetaChange={handleOnMetaChange} />
-        )}
-        {block.type === BlockType.Separator && (
-          <BlockSeparatorActions
-            block={block}
-            onMetaChange={handleOnMetaChange}
-          />
-        )}
-
-        {props.onToggleSplit && block.type !== BlockType.Separator && (
-          <Grid item>
-            <Link
-              component="button"
-              variant="caption"
-              className={css({
-                label: "CharacterDialog-width",
-                color: theme.palette.primary.main,
-              })}
-              onClick={() => {
-                props.onToggleSplit?.();
-              }}
-              underline="hover"
-            >
-              {t("character-dialog.control.width")}
-              {": "}
-              {(block.meta.width || 1) * 100}
-              {"%"}
-            </Link>
-          </Grid>
-        )}
-        {props.otherActions && props.otherActions}
+          {block.type === BlockType.Skill && (
+            <BlockSkillActions block={block} onMetaChange={handleOnMetaChange} />
+          )}
+          {block.type === BlockType.DicePool && (
+            <BlockDicePoolActions
+              block={block}
+              onMetaChange={handleOnMetaChange}
+            />
+          )}
+          {block.type === BlockType.Link && (
+            <BlockLinkActions block={block} onMetaChange={handleOnMetaChange} />
+          )}
+          {block.type === BlockType.Separator && (
+            <BlockSeparatorActions
+              block={block}
+              onMetaChange={handleOnMetaChange}
+            />
+          )}
+	  {block.type === BlockType.PbtaMove && (
+            <BlockPbtaMoveActions block={block} onMetaChange={handleOnMetaChange} />
+          )}
+          {props.onToggleSplit && block.type !== BlockType.Separator && (
+            <Grid item>
+		<Link
+		  component="button"
+		  variant="caption"
+		  className={css({
+                    label: "CharacterDialog-width",
+                    color: theme.palette.primary.main,
+		  })}
+		  onClick={() => {
+                    props.onToggleSplit?.();
+		  }}
+		  underline="hover"
+		>
+		    {t("character-dialog.control.width")}
+		    {": "}
+		    {(block.meta.width || 1) * 100}
+		    {"%"}
+		</Link>
+            </Grid>
+          )}
+          {props.otherActions && props.otherActions}
       </Grid>
     );
   }
