@@ -116,3 +116,13 @@ dist-ssr
 
 # @11ty/eleventy
 _site
+
+# Emacs temporary files
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
